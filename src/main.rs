@@ -1,11 +1,46 @@
 use std::collections::HashMap;
 
 fn main() {
+    t05();
     t04();
     t03();
     t02();
     t01();
     t00();
+}
+
+// 05. n-gram
+// 与えられたシーケンス（文字列やリストなど）からn-gramを作る関数を作成せよ．この関数を用い，"I am an NLPer"という文から単語bi-gram，文字bi-gramを得よ．
+fn t05() {
+    let input = "I am an NLPer";
+
+    // 文字bi-gram
+    assert_eq!(
+        input.chars().zip(input.chars().skip(1)).collect::<Vec<_>>(),
+        [
+            ('I', ' '),
+            (' ', 'a'),
+            ('a', 'm'),
+            ('m', ' '),
+            (' ', 'a'),
+            ('a', 'n'),
+            ('n', ' '),
+            (' ', 'N'),
+            ('N', 'L'),
+            ('L', 'P'),
+            ('P', 'e'),
+            ('e', 'r')
+        ]
+    );
+
+    // 単語bi-gram
+    assert_eq!(
+        input
+            .split_ascii_whitespace()
+            .zip(input.split_ascii_whitespace().skip(1))
+            .collect::<Vec<_>>(),
+        [("I", "am"), ("am", "an"), ("an", "NLPer")]
+    );
 }
 
 // 04. 元素記号
