@@ -1,6 +1,22 @@
 fn main() {
+    t02();
     t01();
     t00();
+}
+
+// 02. 「パトカー」＋「タクシー」＝「パタトクカシーー」
+// 「パトカー」＋「タクシー」の文字を先頭から交互に連結して文字列「パタトクカシーー」を得よ．
+fn t02() {
+    let input1 = "パトカー";
+    let input2 = "タクシー";
+
+    let answer: String = input1
+        .chars()
+        .zip(input2.chars())
+        .map(|(a, b)| format!("{}{}", a, b))
+        .collect();
+
+    assert_eq!(answer, "パタトクカシーー");
 }
 
 // 01. 「パタトクカシーー」
