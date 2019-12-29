@@ -1,7 +1,28 @@
 fn main() {
+    t03();
     t02();
     t01();
     t00();
+}
+
+// 03. 円周率
+// "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."という文を単語に分解し，各単語の（アルファベットの）文字数を先頭から出現順に並べたリストを作成せよ．
+fn t03() {
+    let input = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.";
+
+    let mut answer: Vec<usize> = vec![];
+
+    let mut cs = input.chars();
+
+    while cs.as_str().len() > 0 {
+        let n = cs.by_ref().take_while(|c| c.is_alphanumeric()).count();
+
+        if n != 0 {
+            answer.push(n);
+        }
+    }
+
+    assert_eq!(answer, vec![3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]);
 }
 
 // 02. 「パトカー」＋「タクシー」＝「パタトクカシーー」
